@@ -1,0 +1,8 @@
+ALG-1014 - Develop wait time(Tiempo espera) & occupation time(Tiempo ocupacion) of the FCFS algorithm:
+
+  ✔ According to the FCFS algorithm the wait time of the process is equal to the current time minus the arrival time of the process, the dynamic container should work in that way.  @done (16-11-13 12:15)
+  ✔ According to the FCFS algorithm the occupation time of the process is equal to the sum of all the occupation of each process time minus the arrival time of the process, the dynamic container should work in that way. @done (16-11-13 11:46)
+  ✔ Calculate average of all the process and print it out on the dynamic container. @done (16-11-13 12:16)
+
+Estimation: 
+  2 points.
