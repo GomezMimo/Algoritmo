@@ -1,0 +1,5 @@
+ALG-1010:
+
+  [ ] Identify and validate when "Tipo de Algoritmo" select has changed.
+  [ ] When "Tipo de Algoritmo" select has changed the values on the dynamic containers must be reset.
+  [ ] Validate the type of value of the inputs, they only can be numbers.    

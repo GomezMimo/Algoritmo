@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Algortimo FCFS</title>
+	<link rel="stylesheet" type="text/css" href="estilos/algoritmo.css">
+	<script type="text/javascript" src="scripts/proceso.js">
+	</script>
+</head>
+<body>
+	<header>
+		<h1>Algoritmo FCFS</h1>	
+	</header>
+	<section>
+		<fieldset>
+			<legend>Agregar proceso</legend>
+			<form>
+				<label for="llegada">Llegada proceso: </label>
+				<input type="text" id="llegada" name="llegada"/>
+				<label for="ocupacion">Ocupacion en CPU: </label>
+				<input type="text" id="ocupacion" name="ocupacion"/>
+			</form>
+			<label class="tipo-algoritmo-label" for="tipo-algoritmo">Tipo de Algoritmo: </label>				
+			<select id="tipo-algoritmo">
+				<option>FCFS</option>
+				<option>STF Expulsivo</option>
+				<option>STF No Expulsivo</option>
+				<option>Round Robin</option>
+			</select>				
+			<button id="agregar">Agregar</button>
+		</fieldset>
+	</section>
+	<h2>Tiempo Espera</h2>	
+	<div id="tiempo-espera" class="contenedor-procesos">
+			
+	</div>
+	<h2>Tiempo Ocupación</h2>
+	<div id="tiempo-ocupacion" class="contenedor-procesos">
+				
+	</div>	
+	<script>
+		inicio();
+	</script>
+</body>
+</html>
