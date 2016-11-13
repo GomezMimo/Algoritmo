@@ -14,8 +14,13 @@ function obtenerDatosProceso() {
 	var ordenLlegada = Number(document.getElementById("llegada").value);
 	var ocupacionCPU = Number(document.getElementById("ocupacion").value);
 	contador++;
-	agregarProceso(ordenLlegada, ocupacionCPU, contador);
-
+	if(isNaN(ordenLlegada) || isNaN(ocupacionCPU)) {
+		contador--;
+		alert("Por favor ingrese solo números");
+		inicio();
+	}else{		
+		agregarProceso(ordenLlegada, ocupacionCPU, contador);
+	}
 }
 
 function inicio() {
