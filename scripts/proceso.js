@@ -18,7 +18,11 @@ function obtenerDatosProceso() {
 		contador--;
 		alert("Por favor ingrese solo números");
 		inicio();
-	}else{		
+	} else if(ordenLlegada < 0 || ocupacionCPU < 0) {
+		contador--;
+		alert("Los numeros ingresados tienen que ser mayores a 0");
+		inicio();
+	} else {		
 		agregarProceso(ordenLlegada, ocupacionCPU);
 	}
 }
@@ -44,7 +48,7 @@ function agregarProceso(ordenLlegada, ocupacionCPU) {
 		});
 		if(procesoRepetido) {
 			contador--;
-			alert("Ya hay un proceso que se repite");						
+			alert("Ya hay un proceso que ocupa ese espacio en memoria");						
 		} else { 			
 			arregloProceso.push({numero_proceso: 'proceso ' + contador, orden_llegada: ordenLlegada, ocupacion_CPU: ocupacionCPU});			
 		}	
