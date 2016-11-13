@@ -1,0 +1,9 @@
+ALG-1015 - Develop wait time(Tiempo espera) & occupation time(Tiempo ocupacion) of the SJF-NoExpulsivo algorithm:
+
+  ✔ The array must be sorted  in the following way: 1. the first object should be the one that has the minor wait time. 2. The rest of them should be sorted with the minor occupation time in ascending order.   @done (16-11-13 16:57)
+  ✔ According to the SJF-NoExpulsivo algorithm, the wait time of the process is equal to the current time minus the arrival time of the process, the dynamic container should work in that way. @done (16-11-13 16:57)
+  ✔ According to the SJF-NoExpulsivo algorithm, the occupation time of the process is equal to the sum of all the occupation of each process time, minus the arrival time of the process, the dynamic container should work in that way. @done (16-11-13 16:57)
+  ✔ Calculate average of all the process and print it out on the dynamic container. @done (16-11-13 16:57)
+
+Estimation: 
+  5 points.
