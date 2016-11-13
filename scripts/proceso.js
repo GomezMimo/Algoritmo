@@ -134,7 +134,6 @@ function algoritmoNoExplusivo(tiempoEspera, tiempoOcupacion) {
 	if(STFNoFlag) {
 		arregloProceso.unshift(primerObjeto);
 	}
-	console.log(arregloProceso);		
 	arregloProceso.forEach(function (proceso) {		
 		tiempoTotal += proceso.ocupacion_CPU;
 		ultimoProceso = proceso.ocupacion_CPU;
