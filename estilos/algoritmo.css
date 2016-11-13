@@ -18,8 +18,7 @@ fieldset {
 	box-sizing: border-box;
 	height: 280px;
 	margin-bottom: 50px;
-	padding: 20px;
-	padding-top: 44px;
+	padding: 40px 20px 20px 20px;	
 }
 
 legend {
