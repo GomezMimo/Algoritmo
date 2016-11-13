@@ -1,5 +1,5 @@
-ALG-1010:
+ALG-1010 - Select functionality & number validation:
 
-  [ ] Identify and validate when "Tipo de Algoritmo" select has changed.
-  [ ] When "Tipo de Algoritmo" select has changed the values on the dynamic containers must be reset.
-  [ ] Validate the type of value of the inputs, they only can be numbers.    
+  ✔ Identify and validate when "Tipo de Algoritmo" select has changed. @done (16-11-12 22:50)
+  ✔ When "Tipo de Algoritmo" select has changed the values on the dynamic containers must be reset. @done (16-11-12 22:50)
+  ✔ Validate the type of value of the inputs, they only can be numbers.     @done (16-11-12 22:56)

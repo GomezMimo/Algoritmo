@@ -17,8 +17,8 @@ section	{
 fieldset {
 	box-sizing: border-box;
 	height: 280px;
-	padding: 20px;
-	padding-top: 44px;
+	margin-bottom: 50px;
+	padding: 40px 20px 20px 20px;	
 }
 
 legend {
@@ -77,13 +77,21 @@ select {
 	width: 131px;
 }
 
+h2 {
+	margin-left: 25px;
+}
+
 .tipo-algoritmo-label {
 	margin-left: 40px;
 }
 
 .contenedor-procesos {
-	margin: 50px 40px;
-	margin-top: 50px;
+	margin: 10px 40px 50px;
+}
+
+.contador-proceso {
+	font-weight: bold;
+	margin-right: 5px;
 }
 
 
