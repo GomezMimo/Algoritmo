@@ -1,0 +1,6 @@
+ALG-1012 - Number of process doesn't follow the sequence when the user repeats a process:
+
+  ✔ The number of the process should makes sense and must follow the sequence, although the user tries to put in the processor a process that is already on it. @done (16-11-12 23:40)
+
+Estimation: 
+  2 points.

@@ -19,7 +19,7 @@ function obtenerDatosProceso() {
 		alert("Por favor ingrese solo números");
 		inicio();
 	}else{		
-		agregarProceso(ordenLlegada, ocupacionCPU, contador);
+		agregarProceso(ordenLlegada, ocupacionCPU);
 	}
 }
 
@@ -30,10 +30,9 @@ function inicio() {
 	cambiarProceso.addEventListener("change", cambiarTipoAlgoritmo);
 }
 
-function agregarProceso(ordenLlegada, ocupacionCPU, contador) {
+function agregarProceso(ordenLlegada, ocupacionCPU) {
 	var cambiarProceso = document.getElementById("tipo-algoritmo").value;
-	var procesoRepetido = false;
-	var  contadorFallas = 0;
+	var procesoRepetido = false;	
 	if (arregloProceso.length < 1) {
 		console.log("estoy acà");
 		arregloProceso.push({numero_proceso: 'proceso ' + contador, orden_llegada: ordenLlegada, ocupacion_CPU: ocupacionCPU});
@@ -44,7 +43,8 @@ function agregarProceso(ordenLlegada, ocupacionCPU, contador) {
 			}
 		});
 		if(procesoRepetido) {
-			alert("Ya hay un proceso que se repite");			
+			contador--;
+			alert("Ya hay un proceso que se repite");						
 		} else { 			
 			arregloProceso.push({numero_proceso: 'proceso ' + contador, orden_llegada: ordenLlegada, ocupacion_CPU: ocupacionCPU});			
 		}	
