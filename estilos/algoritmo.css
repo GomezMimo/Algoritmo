@@ -4,20 +4,20 @@ html, body {
 }
 
 header {
-    margin: 0 auto;
-    margin-bottom: 10px;
     background-image: url(../img/math-header.jpg);
     background-size: cover;
     height: 120px;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 
 header h1 {
+    color: #efefef;
+    font-size: 3em;
+    position: relative;
     text-align: center;
     text-shadow: 3px 3px #444444;
-    color: #efefef;
-    position: relative;
     top: 20px;
-    font-size: 3em;
 }
 
 h4 {
