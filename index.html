@@ -1,45 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Algortimos del proceso</title>
-	<link rel="stylesheet" type="text/css" href="estilos/algoritmo.css">
-	<script type="text/javascript" src="scripts/proceso.js">
-	</script>
+    <meta charset="UTF-8">
+    <title>Algortimos del proceso</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="estilos/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos/bootstrap.min.css.map">
+    <link rel="stylesheet" type="text/css" href="estilos/algoritmo.css">
 </head>
 <body>
-	<header>
-		<h1>Algortimos del proceso</h1>	
-	</header>
-	<section>
-		<fieldset>
-			<legend>Agregar proceso</legend>
-			<form>
-				<label for="llegada">Llegada proceso: </label>
-				<input type="text" id="llegada" name="llegada"/>
-				<label for="ocupacion">Ocupacion en CPU: </label>
-				<input type="text" id="ocupacion" name="ocupacion"/>
-			</form>
-			<label class="tipo-algoritmo-label" for="tipo-algoritmo">Tipo de Algoritmo: </label>				
-			<select id="tipo-algoritmo">
-				<option>FCFS</option>
-				<option>STF No Expulsivo</option>
-				<option>STF Expulsivo</option>				
-				<option>Round Robin</option>
-			</select>				
-			<button id="agregar">Agregar</button>
-		</fieldset>
-	</section>
-	<h2>Tiempo Espera</h2>	
-	<div id="tiempo-espera" class="contenedor-procesos">
-			
-	</div>
-	<h2>Tiempo Ocupación</h2>
-	<div id="tiempo-ocupacion" class="contenedor-procesos">
-				
-	</div>	
-	<script>
-		inicio();
-	</script>
+<header>
+    <h1>Algortimos del proceso</h1>
+</header>
+
+<div class="container">
+    <h4>Agregar Proceso</h4>
+    <form onsubmit="return false">
+        <div class="form-group row">
+            <label for="llegada" class="col-xs-4 col-form-label">Llegada proceso (segundos)</label>
+            <div class="col-xs-8">
+                <input type="text" id="llegada" name="llegada" class="form-control" placeholder="Ejemplo: 3"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="ocupacion" class="col-xs-4 col-form-label">Ocupacion en CPU (segundos)</label>
+            <div class="col-xs-8">
+                <input type="text" id="ocupacion" name="ocupacion" class="form-control" placeholder="Ejemplo: 5"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-4 col-form-label" for="tipo-algoritmo">Tipo de Algoritmo: </label>
+            <div class="col-xs-8">
+                <select id="tipo-algoritmo" class="form-control">
+                    <option>FCFS</option>
+                    <option>STF No Expulsivo</option>
+                    <option>STF Expulsivo</option>
+                    <option>Round Robin</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group text-xs-center">
+            <button id="agregar" class="btn btn-md btn-primary">Agregar</button>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <h4>Tiempo Espera</h4>
+            <div id="tiempo-espera" class="contenedor-procesos">
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <h4>Tiempo Ocupación</h4>
+            <div id="tiempo-ocupacion" class="contenedor-procesos">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="scripts/jquery-3.1.1.min.js"></script>
+<script src="scripts/tether.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/proceso.js"></script>
+<script>
+    inicio();
+</script>
 </body>
 </html>

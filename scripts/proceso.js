@@ -13,6 +13,7 @@ function cambiarTipoAlgoritmo() {
 }
 
 function obtenerDatosProceso() {
+	
 	var ordenLlegada = Number(document.getElementById("llegada").value);
 	var ocupacionCPU = Number(document.getElementById("ocupacion").value);
 	contador++;
@@ -24,7 +25,7 @@ function obtenerDatosProceso() {
 		contador--;
 		alert("Los numeros ingresados tienen que ser mayores a 0");
 		inicio();
-	} else {		
+	} else {
 		agregarProceso(ordenLlegada, ocupacionCPU);
 	}
 }
@@ -38,7 +39,7 @@ function inicio() {
 
 function agregarProceso(ordenLlegada, ocupacionCPU) {
 	var cambiarProceso = document.getElementById("tipo-algoritmo").value;
-	var procesoRepetido = false;	
+	var procesoRepetido = false;
 	if (arregloProceso.length < 1) {
 		arregloProceso.push({numero_proceso: 'proceso ' + contador, orden_llegada: ordenLlegada, ocupacion_CPU: ocupacionCPU});
 	} else {
@@ -49,11 +50,11 @@ function agregarProceso(ordenLlegada, ocupacionCPU) {
 		});
 		if(procesoRepetido) {
 			contador--;
-			alert("Ya hay un proceso que ocupa ese espacio en memoria");						
-		} else { 			
-			arregloProceso.push({numero_proceso: 'proceso ' + contador, orden_llegada: ordenLlegada, ocupacion_CPU: ocupacionCPU});			
-		}	
-	}	
+			alert("Ya hay un proceso que ocupa ese espacio en memoria");
+		} else {
+			arregloProceso.push({numero_proceso: 'proceso ' + contador, orden_llegada: ordenLlegada, ocupacion_CPU: ocupacionCPU});
+		}
+	}
 	var tiempoEspera = document.getElementById("tiempo-espera");
 	var tiempoOcupacion = document.getElementById("tiempo-ocupacion");
 	if(cambiarProceso === "FCFS") {
@@ -63,7 +64,7 @@ function agregarProceso(ordenLlegada, ocupacionCPU) {
 	}
 }
 
-function algoritmoFCFS(tiempoEspera, tiempoOcupacion) {	
+function algoritmoFCFS(tiempoEspera, tiempoOcupacion) {
 	var tiempoTotal = 0;
 	var esperaProceso = 0;
 	var llegadaProceso = 0;
@@ -79,9 +80,9 @@ function algoritmoFCFS(tiempoEspera, tiempoOcupacion) {
 	    return -1;
 	  }
 	  return 0;
-	});	
+	});
 
-	arregloProceso.forEach(function (proceso) {		
+	arregloProceso.forEach(function (proceso) {
 		tiempoTotal += proceso.ocupacion_CPU;
 		ultimoProceso = proceso.ocupacion_CPU;
 		esperaProceso = ((tiempoTotal - proceso.orden_llegada) - ultimoProceso);
@@ -94,8 +95,8 @@ function algoritmoFCFS(tiempoEspera, tiempoOcupacion) {
 		totalEspera += esperaProceso;
 		totalOcupacion += llegadaProceso;
 	});
-	tiempoEspera.innerHTML += "<p> <span class='contador-proceso'>Promedio: </span>" + (totalEspera / arregloProceso.length).toFixed(2) + " segundos."; 
-	tiempoOcupacion.innerHTML += "<p> <span class='contador-proceso'>Promedio: </span>" + (totalOcupacion / arregloProceso.length).toFixed(2) + " segundos."; 
+	tiempoEspera.innerHTML += "<p> <span class='contador-proceso'>Promedio: </span>" + (totalEspera / arregloProceso.length).toFixed(2) + " segundos.";
+	tiempoOcupacion.innerHTML += "<p> <span class='contador-proceso'>Promedio: </span>" + (totalOcupacion / arregloProceso.length).toFixed(2) + " segundos.";
 }
 
 function algoritmoNoExplusivo(tiempoEspera, tiempoOcupacion) {
@@ -115,14 +116,14 @@ function algoritmoNoExplusivo(tiempoEspera, tiempoOcupacion) {
 		    return -1;
 		}
 		return 0;
-	});	
+	});
 
 	if(arregloProceso.length > 1) {
 		primerObjeto = arregloProceso[0];
 		arregloProceso.shift();
-		STFNoFlag = true;				
+		STFNoFlag = true;
 	}
-	arregloProceso = arregloProceso.sort(function (a, b) {		
+	arregloProceso = arregloProceso.sort(function (a, b) {
 		if (a.ocupacion_CPU > b.ocupacion_CPU) {
 	    	return 1;
 	  	}
@@ -134,7 +135,7 @@ function algoritmoNoExplusivo(tiempoEspera, tiempoOcupacion) {
 	if(STFNoFlag) {
 		arregloProceso.unshift(primerObjeto);
 	}
-	arregloProceso.forEach(function (proceso) {		
+	arregloProceso.forEach(function (proceso) {
 		tiempoTotal += proceso.ocupacion_CPU;
 		ultimoProceso = proceso.ocupacion_CPU;
 		esperaProceso = ((tiempoTotal - proceso.orden_llegada) - ultimoProceso);
@@ -147,8 +148,8 @@ function algoritmoNoExplusivo(tiempoEspera, tiempoOcupacion) {
 		totalEspera += esperaProceso;
 		totalOcupacion += llegadaProceso;
 	});
-	tiempoEspera.innerHTML += "<p> <span class='contador-proceso'>Promedio: </span>" + (totalEspera / arregloProceso.length).toFixed(2); 
-	tiempoOcupacion.innerHTML += "<p> <span class='contador-proceso'>Promedio: </span>" + (totalOcupacion / arregloProceso.length).toFixed(2); 
+	tiempoEspera.innerHTML += "<p> <span class='contador-proceso'>Promedio: </span>" + (totalEspera / arregloProceso.length).toFixed(2);
+	tiempoOcupacion.innerHTML += "<p> <span class='contador-proceso'>Promedio: </span>" + (totalOcupacion / arregloProceso.length).toFixed(2);
 }
 
 function algoritmoExplusivo() {
