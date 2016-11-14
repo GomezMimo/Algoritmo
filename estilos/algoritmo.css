@@ -73,3 +73,25 @@ h2 {
     margin-right: 5px;
 }
 
+#graphic-process {
+    margin: 30px 0;
+
+}
+
+.slot-ocupado, .slot-vacio {
+    border: 1px solid #999999;
+    float: left;
+    width: 25px;
+    padding: 1px;
+    text-align: center;
+}
+
+.slot-ocupado {
+    background: black;
+    color: white;
+}
+
+.slot-vacio {
+    background: white;
+    color: black;
+}
