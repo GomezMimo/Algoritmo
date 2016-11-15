@@ -1,0 +1,8 @@
+ALG-1015 - Develop SJF-NoExpulsivo algorithm:
+
+  ✔ The algorithm has to get the difference among the px(execution-time) & py+1(wait time) wheter px is greater that py+1 and save it into an array. @done (16-11-14 23:16)
+  ☐ The algorithm has to do an operation to show in the dynamic container the wait and ocuppation time of each process  
+  ☐ Calculate average of all the process and print it out on the dynamic container.
+
+Estimation: 
+  5 points.

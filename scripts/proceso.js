@@ -71,6 +71,8 @@ function agregarProceso(ordenLlegada, ocupacionCPU) {
 		algoritmoFCFS(tiempoEspera, tiempoOcupacion);
 	} else if (cambiarProceso === 'STF No Expulsivo') {
 		algoritmoNoExplusivo(tiempoEspera, tiempoOcupacion);
+	} else if (cambiarProceso === 'STF Expulsivo') {
+		algoritmoExplusivo(tiempoEspera, tiempoOcupacion);
 	}
 }
 
@@ -171,9 +173,124 @@ function algoritmoNoExplusivo(tiempoEspera, tiempoOcupacion) {
 	dibujarGraficaProcesos();
 }
 
-function algoritmoExplusivo() {
+function algoritmoExplusivo(tiempoEspera, tiempoOcupacion) {
+	var primerObjeto;
+	var tiempoTotal = 0;
+	var esperaProceso = 0;
+	var llegadaProceso = 0;
+	var totalEspera = 0;
+	var totalOcupacion = 0;
+	var actualTiempoEjecucion = 0;
+	var procesoEnCola = 0;
+	var procesosEnCola = [];
+	var arregloProcesoExpulsivo = []; 
+	var nuevoArreglo = [];
+	tiempoEspera.innerHTML  = "";
+	tiempoOcupacion.innerHTML = "";
+	arregloProceso = arregloProceso.sort(function (a, b) {
+	 	if (a.orden_llegada > b.orden_llegada) {
+		    return 1;
+		}
+		if (a.orden_llegada < b.orden_llegada) {
+		    return -1;
+		}
+		return 0;
+	});		
+	arregloProceso.forEach(function (proceso, index) {			
+		if(arregloProceso.length <= 1) {			
+			if(esperaProceso < 0 ) {
+				esperaProceso = 0;
+			}
+			tiempoEspera.innerHTML += "<p> <span class='contador-proceso'> " + proceso.numero_proceso + ":</span> " + esperaProceso + " segundos.</p>";
+			tiempoOcupacion.innerHTML += "<p> <span class='contador-proceso'> " + proceso.numero_proceso + ":</span> " + llegadaProceso + " segundos.</p>";
+			totalEspera += esperaProceso;
+			actualTiempoEjecucion = proceso.ocupacion_CPU;
+			procesoEnCola = Math.abs(actualTiempoEjecucion - proceso.orden_llegada);
+			totalOcupacion += llegadaProceso;
+		} else {										
+			if(actualTiempoEjecucion > proceso.orden_llegada) {
+				procesoEnCola = Math.abs(actualTiempoEjecucion - proceso.orden_llegada);
+				procesosEnCola.push({
+					indice: "proceso " + index,				
+					proceso_en_cola: procesoEnCola
+				});											
+			}									
+			actualTiempoEjecucion = proceso.ocupacion_CPU + proceso.orden_llegada;
+			esperaProceso = ((tiempoTotal - proceso.orden_llegada) - ultimoProceso);
+			llegadaProceso = (tiempoTotal - proceso.orden_llegada);
+		}		
+	});	
+	/*console.table(arregloProceso);
+	console.table(procesosEnCola);*/
 	
+	arregloProceso.forEach(function (proceso, index) { 		
+		procesosEnCola.forEach(function (cola) {
+			var a = cola.indice;
+			var b = proceso.numero_proceso;						
+			if(a == b) {								
+				proceso.espera = proceso.ocupacion_CPU - cola.proceso_en_cola;
+				arregloProcesoExpulsivo.push({
+					numero_proceso: proceso.numero_proceso,
+					orden_llegada: proceso.orden_llegada,
+					ocupacion_CPU: proceso.ocupacion_CPU,
+					espera: (proceso.ocupacion_CPU - proceso.espera)
+				});
+			} 			
+		});
+		if(proceso.espera === undefined) {
+			proceso.espera = proceso.ocupacion_CPU;			
+		}		
+	});
+	var copiaArreglo = arregloProceso;
+	console.clear();
+	//console.table(copiaArreglo);	
+	//comparacionProcesos(arregloProcesoExpulsivo);	
+	var banderaDivisionProcesos;	
+	var arrayIndices = [];
+	arregloProceso.forEach(function (proceso, index) {
+		var banderaDivisionProcesos = false;
+		arregloProcesoExpulsivo.forEach(function(procesoExpulsivo) {						
+			if(proceso.numero_proceso == procesoExpulsivo.numero_proceso) {
+				banderaDivisionProcesos = true;
+			}			
+		});			
+		if(!banderaDivisionProcesos) {
+			nuevoArreglo.push(proceso);
+			if(arregloProcesoExpulsivo.length > 1) { 	
+				arrayIndices.push(index);		
+			}			
+		}
+	});
+	//console.log("--------------");
+	////console.table(nuevoArreglo);
+	nuevoArreglo.forEach(function(proceso) {
+		arregloProcesoExpulsivo.push(proceso);
+	});
+	//console.table(arregloProcesoExpulsivo);
+	//console.log("--------------");
+	//console.log(arrayIndices);
+	console.table(arregloProcesoExpulsivo);
+	separacionAlgoritmos(arregloProcesoExpulsivo, arregloProceso, arrayIndices);	
 }
+
+function separacionAlgoritmos(arregloExpulsivo, arregloProceso, arrayIndices) {	
+	console.log("*******");
+	console.log(arrayIndices);
+	var nuevoArregloProcesos = arregloProceso.slice();
+	//console.table(nuevoArregloProcesos);	
+	for(var i = 0; i <= nuevoArregloProcesos.length; i++) {
+		console.log(arrayIndices[i]);
+		if(arrayIndices[i] != undefined && nuevoArregloProcesos.length > 1){
+			console.table(nuevoArregloProcesos);
+			console.log("este es el indice que serà borrado -> " + arrayIndices[i]);
+			nuevoArregloProcesos = nuevoArregloProcesos.splice(arrayIndices[i], 1);				
+		} 			
+		//
+		
+	} 
+	console.table(nuevoArregloProcesos);
+}
+
 
 function algoritmoRoundRobin() {
 	
